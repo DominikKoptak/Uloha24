@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+
+        class Village extends React.Component{
+            constructor(props){
+                super(props);
+
+                let village = [{ type: 'fa-solid fa-building', color: 'gray', size: '50px' },
+                        { type: 'fa-solid fa-car-side', color: 'red', size: '20px' },
+                        { type: 'fa-solid fa-home', color: '#000000', size: '30px' },
+                        { type: 'fa-solid fa-building', color: 'yellow', size: '80px' },
+                        { type: 'fa-solid fa-tree', color: 'green', size: '40px' },
+                        { type: 'fa-solid fa-tree', color: 'green', size: '60px' },
+                        { type: 'fa-solid fa-tree', color: 'green', size: '15px' },
+                        { type: 'fa-solid fa-home', color: 'brown', size: '25px' },
+                        { type: 'fa-solid fa-home', color: '#88cfe5', size: '35px' }];
+
+                this.state = {data: village};
+
+            }
+            render(){
+
+                //{this.state.village.map(
+                //    (item) => (
+                //        <i class="fa-solid fa-house" type={item.type} style={{color: item.color, fontSize: item.//size}}></i>
+                //    )
+                //)}
+
+
+               //for (const item of this.state.data) {
+               //    console.log(item);
+               //    village.push(<i class="fa-solid fa-house" type={item.type} style={{color: item.color, fontSize: item.size}}></i>)
+               //}
+                return(
+                    <>
+                    {this.state.data.map(
+                        (item) => (
+                            <VillageItem item={item}/>
+                        )
+                    )}
+                    </>
+                );
+            }
+        }
+
+        class VillageItem extends React.Component{
+            render(){
+                return(
+                        <i class={this.props.item.type} type={this.props.item.type} style={{color: this.props.item.color, fontSize: this.props.item.size}}></i>
+                );
+            }
+        }
+       const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<Village/>);
+
+    </script>
+</body>
+</html>
